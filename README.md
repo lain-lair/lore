@@ -1,8 +1,8 @@
 # lore
-Collection of scripts and documents about linux pet systems.
+**Collection of scripts and documents about linux pet systems.**
 
 *Fri Nov 11 10:15:18 AM -03 2022*
+Initializing project.
 
-## Initializing project.
-
-See if I can push to github without a key.
+*Sat Nov 12 11:00:56 AM -03 2022*
+The first doc is on, also set to kindle for review.
