@@ -3,3 +3,6 @@ body {
   color:lime;
   font-family:garamond;
 }
+code {
+  color:gray;
+}
