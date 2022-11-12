@@ -7,4 +7,4 @@ Initializing project.
 *Sat Nov 12 11:00:56 AM -03 2022*
 The first doc is on, also set to kindle for review.
 
-???
+Note: Configure e-mail on Git on your own machine before pushing code!
