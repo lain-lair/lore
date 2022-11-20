@@ -1,0 +1,57 @@
+<h1>All About Environment Variables</h1>
+<p>Our various test computers have an average of 50 environment variables on each of them. An environment variable, like any other variable, is a combination of a name and a value. The name is unique, set when the variable is created, and it last for the lifetime of the environment variable.</p>
+<p>Variables hold values for us. When a process needs to know what the value is, it looks up the variable by name in a list, and reads the value from it. Although variable names cannot be changed, their values can be.</p>
+<p>You won’t often change system environment variables, but you can if you need to. For example, you might like to increase the size of your Bash shell command history cache. You can edit the value of the $HISTSIZE environment variable in your “.bashrc” file to set a new upper limit for the number of remembered commands.</p>
+<p>That’s neat and convenient, but it isn’t something you’ll be doing often. Environment variables tend to be left at their defaults or they’re changed once and then forgotten about. They’re not something you’ll tinker with often.</p>
+<p>Nonetheless, it is worthwhile knowing how to check the environment variables that are defined and in use on your computer. Printing the environment variables to a terminal window lets you see their values, and shows you what aspects of your Linux experience are governed by these background values.</p>
+<h2>How to Show an Environment Variable’s Value</h2>
+<p>You can use echo to see the value stored in an environment variable. To do that you’ll need to know the name of the environment variable in advance.<p>
+<code>echo $HOME</code><br>
+<code>echo $USER</code><br>
+<p>Using echo to see the values stored in environment variables</p>
+<p>There are two methods commonly used to show the names and values of all the environment variables on Linux. They are the env and the printenv commands.</p>
+<p>The printenv command is the official way to do it. The command was written specifically for this purpose. The env command has an altogether different purpose.</p>
+<p>env is used to run an application with temporary, user-specified, values for environment variables. These override the real stored values, and allow the application to run in a modified environment. If you invoke env with no command line parameters, its default action is to list the environment variables.</p>
+<p>We may as well use the tool designed for the job, rather than depend on the side-effect of a tool that has been invoked incorrectly, so we’ll be using printenv to check environment variables in our examples.</p>
+<h2>How to List Environment Variables Using printenv</h2>
+<p>The printenv command lets you show environment variables and is very straightforward in practice. It has very few options. You can use the --version option to find out the release number of the version on your computer, and you can use the --help command to see a short description of these two and one other command line option.</p>
+<p>The other option is the -0 (null terminator) option. Usually, printenv lists the environment variables one per line, by adding a newline character to the end of each line. The -0 option replaces that newline character with a null byte. You would use this option if you were piping the output into another application that didn’t need the newline characters.</p>
+<code>printenv -0</code><br>
+<h2>Using printenv with the -0 option</h2>
+<p>The effect of the -0 option in a terminal window is to cram the output together into an impenetrable wall of text.</p>
+<p>It’s practically impossible to make sense of the environment variables listed in this format. It’ll be a rare occurrence if you ever need to use the -0 option. Let’s drop it, and try again.</p>
+<code>printenv</code><br>
+<h2>Using the printenv command with no options</h2>
+<p>The output is printed with one environment variable per line. By convention, environment variable names always use uppercase characters. Immediately after the variable name is an equals sign “=“, followed by the value that the environment variable is set to.</p>
+<p>There’s still a lot of output, so you might find it easier to pipe the environment variables into less .</p>
+<code>printenv | less</code><br>
+<p>This lets you scroll through the list of environment variables, and to search the list as well.</p>
+<p>If you know something about the environment variable you’re interested in, you can use grep to find the likely candidates. Suppose you know there’s an environment variable that has the word “display” in it. We can search the list like this:</p>
+<code>printenv | grep DISPLAY</code><br>
+<h2>Some Common Environment Variables</h2>
+<p>The default environment variables on different Linux computers are subject to the preferences of the maintainers of the various distributions, desktop environments, and shells. So when you’re checking environment variables on your Linux device, you may see varying results.</p>
+<p>Here are some of the more common environment variables you’re likely to find on a Linux computer using the GNOME desktop environment.</p>
+<ul>
+  <li><strong>* BASHOPTS:</strong> The list of command line options that were used when bash was launched.</li>
+  <li><strong>* BASH_VERSION:</strong> The version of bash.</li>
+  <li><strong>* COLUMNS:</strong> The width of the terminal in columns.</li>
+  <li><strong>* DIRSTACK:</strong> The stack of directories for use with the pushd and popd commands.</li>
+  <li><strong>* HISTFILESIZE:</strong> The maximum number of lines of command history that can be written to the history file.</li>
+  <li><strong>* HISTSIZE:</strong> The maximum number of lines of command history allowed to be stored in memory. If you go past this number, previously remembered commands are overwritten in memory. When you close your terminal window, the command history is written to the history file.</li>
+  <li><strong>* HOME:</strong> The current user’s home directory.</li>
+  <li><strong>* HOSTNAME:</strong> The name of the computer.</li>
+  <li><strong>* IFS:</strong> The internal field separator that is used to parse user input. The default value is a space.</li>
+  <li><strong>* LANG:</strong> The current language and localization settings, including character encoding.</li>
+  <li><strong>* LS_COLORS:</strong> This defines the codes that are used to add color to the output from ls.</li>
+  <li><strong>* MAIL:</strong> The path to the current user’s Linux mailbox.</li>
+  <li><strong>* OLDPWD:</strong> The previous working directory.</li>
+  <li><strong>* PS1:</strong> The primary command prompt definition. This defines what the prompt in your terminal window looks like.</li>
+  <li><strong>* PATH:</strong> A colon-separated list of directories that are searched, in order, for a matching command or application when you type a command into the shell.</li>
+  <li><strong>* PWD:</strong> The current working directory.</li>
+  <li><strong>* SHELL:</strong> The name of your default shell.</li>
+  <li><strong>* TERM:</strong> The type of terminal that is emulated when you run a shell.</li>
+  <li><strong>* UID:</strong> The user identifier of the current user.</li>
+  <li><strong>* USER:</strong> The current user.</li>
+  <li><strong>* _:</strong> The most recently executed command. If you use printenv to list this, it’ll always be printenv.</li>
+</ul>
+<hr>
